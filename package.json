@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "husky": {
     "hooks": {
@@ -27,6 +29,10 @@
     "eslint": "^9.27.0",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
+    "nodemon": "^3.1.10",
     "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
