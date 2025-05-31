@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const vehicleRoutes = require("./routes/vehicleType")
-const vehicle = require("./routes/vehicle")
-
+const vehicleTypeRoutes = require("./routes/vehicleType")
+const vehicleRoutes = require("./routes/vehicle")
+const bookingRoutes = require("./routes/booking")
 const app = express();
 
 app.use(bodyParser.json());
@@ -11,9 +11,11 @@ app.get('/', (req, res) => {
   res.send('hello world');
 });
 
-app.use("/vehicle-type",vehicleRoutes)
+app.use("/vehicle-type",vehicleTypeRoutes)
 
-app.use("/vehicle",vehicle)
+app.use("/vehicle",vehicleRoutes)
+
+app.use("/booking",bookingRoutes)
 
 app.listen(3000, () => {
   console.log('registered');
