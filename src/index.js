@@ -17,6 +17,6 @@ app.use("/vehicle",vehicleRoutes)
 
 app.use("/booking",bookingRoutes)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT ??3001, () => {
   console.log('registered');
 });
