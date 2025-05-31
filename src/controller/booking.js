@@ -16,6 +16,19 @@ const createBookingForVehicle = async (req, res) => {
 
   const startDate = new Date(from);
   const endDate = new Date(to);
+  const currentTime = (new Date()).setHours(0,0,0,0);
+
+  if(startDate.getTime() > endDate.getTime()){
+    return res
+      .status(404)
+      .json({ success: false, errors : { message: 'start date must not be greater than end date'} });
+  }
+
+  if(startDate.getTime() < currentTime || endDate.getTime() < currentTime){
+    return res
+      .status(404)
+      .json({ success: false, errors : { message: 'bookings cannot be made in the past'} });
+  }
 
   const vehicle = await prisma.vehicle.findUnique({
     where: {

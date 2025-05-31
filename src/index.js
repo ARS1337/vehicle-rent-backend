@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser')
+var cors = require('cors')
 const vehicleTypeRoutes = require("./routes/vehicleType")
 const vehicleRoutes = require("./routes/vehicle")
 const bookingRoutes = require("./routes/booking")
 const app = express();
+
+app.use(cors())
 
 app.use(bodyParser.json());
 
