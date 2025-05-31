@@ -1,10 +1,12 @@
 const  { Router } = require("express");
 const { getBookingsByVehicle, createBookingForVehicle } = require("../controller/booking");
+const validate = require('../middleware/schemaValidation');
+const {createBookingSchema,queryBookingSchema} = require("../schema/booking")
 
 const router = Router();
 
-router.get("/:id",getBookingsByVehicle)
+router.get("/:id",validate(queryBookingSchema),getBookingsByVehicle)
 
-router.post("/",createBookingForVehicle)
+router.post("/",validate(createBookingSchema),createBookingForVehicle)
 
 module.exports = router;

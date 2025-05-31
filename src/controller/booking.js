@@ -26,7 +26,7 @@ const createBookingForVehicle = async (req, res) => {
   if (!vehicle) {
     return res
       .status(404)
-      .json({ success: false, message: 'vehicle not found for vehicleID' });
+      .json({ success: false, errors : { message: 'vehicle not found for vehicleID'} });
   }
 
   const bookings = await prisma.booking.findMany({
@@ -94,7 +94,7 @@ const createBookingForVehicle = async (req, res) => {
   });
 
   if(bookings.length>0){
-    return res.status(404).json({success: false, message : "booking already present within date range provided"})
+    return res.status(404).json({success: false, errors : { message : "booking already present within date range provided"}})
   }
 
   const booking = await prisma.booking.create({
